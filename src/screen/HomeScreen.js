@@ -57,7 +57,7 @@ export default class HomeScreen extends Component {
         rightIconName = "md-cart"
         title = "Home"
       />
-      <SearchBar categories={this.state.categories} />   
+      <SearchBar press={() => this.props.navigation.navigate('Categories',{cat: this.state.categories})} />   
     </View>
     <Content>
       

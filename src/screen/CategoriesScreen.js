@@ -12,13 +12,13 @@ export default class CategoriesScreen extends Component {
         }
     }
     componentWillMount(){
+        const { navigation } = this.props;
+        const cat = navigation.getParam('cat', 'NO-Cat');
           this.setState({
-            categories: this.props.navigation.state.params.categories,
+            categories: cat
           })
-          console.log("this. Cat")
     }
     render(){
-        
         return (
             <View style={{ flex: 1}}>
                 <Header  

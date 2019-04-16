@@ -7,7 +7,7 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 //Screens 
 import HomeScreen from './src/screen/HomeScreen'
 import CategoriesScreen from './src/screen/CategoriesScreen'
-
+import LoginScreen from './src/screen/LoginScreen'
 
 const AppStackNavigator = createStackNavigator({
   Home: { 
@@ -18,6 +18,12 @@ const AppStackNavigator = createStackNavigator({
   } ,
   Categories: {
     screen: CategoriesScreen,
+    navigationOptions: () => ({
+      header:null
+    })
+  },
+  Login: {
+    screen: LoginScreen,
     navigationOptions: () => ({
       header:null
     })
