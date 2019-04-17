@@ -9,6 +9,7 @@ import { Container, Icon, Content, Card, CardItem } from 'native-base'
 //Custom Component I Write
 import Header from '../component/Header'
 import SearchBar from '../component/SearchBar'
+import Swiper from '../component/Swiper'
 import AdsSwiper from '../component/Swiper'
 import RecommendedCardItem from '../component/RecommendedCardItem'
 import ProductQucklyOverView from '../component/ProductQucklyOverView'
