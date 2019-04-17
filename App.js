@@ -10,7 +10,7 @@ import CategoriesScreen from './src/screen/CategoriesScreen'
 import LoginScreen from './src/screen/LoginScreen'
 import CategoryScreen from './src/screen/CategoryScreen'
 import ProductScreen from './src/screen/ProductScreen'
-
+import CardScreen from './src/screen/CardScreen';
 
 const AppStackNavigator = createStackNavigator({
   Home: { 
@@ -43,10 +43,16 @@ const AppStackNavigator = createStackNavigator({
       header:null
     })
   },
+  CardItem: {
+    screen: CardScreen,
+    navigationOptions: () => ({
+      header:null
+    })
+  },
 
   },
   {
-    initialRouteName: "Product"
+    initialRouteName: "Home"
   }
   )
 
