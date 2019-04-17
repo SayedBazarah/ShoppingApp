@@ -8,6 +8,9 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 import HomeScreen from './src/screen/HomeScreen'
 import CategoriesScreen from './src/screen/CategoriesScreen'
 import LoginScreen from './src/screen/LoginScreen'
+import CategoryScreen from './src/screen/CategoryScreen'
+import ProductScreen from './src/screen/ProductScreen'
+
 
 const AppStackNavigator = createStackNavigator({
   Home: { 
@@ -27,9 +30,25 @@ const AppStackNavigator = createStackNavigator({
     navigationOptions: () => ({
       header:null
     })
-  }
+  },
+  Category: {
+    screen: CategoryScreen,
+    navigationOptions: () => ({
+      header:null
+    })
+  },
+  Product: {
+    screen: ProductScreen,
+    navigationOptions: () => ({
+      header:null
+    })
+  },
 
-  })
+  },
+  {
+    initialRouteName: "Product"
+  }
+  )
 
 const AppContainer = createAppContainer(AppStackNavigator)
 
