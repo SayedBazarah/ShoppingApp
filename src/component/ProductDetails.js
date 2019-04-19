@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { Text, View, Image, TouchableOpacity } from 'react-native';
 import { Card,Item, CardItem, Right } from 'native-base';
 import StarRating from 'react-native-star-rating';
+
 export default class ProductDetails extends Component {
   constructor(props){
     super(props)
   }
   render() {
+   // console.log(this.props.product)
     return (
       <TouchableOpacity onPress={this.props.press} style={{flexDirection: 'column',paddingTop:10,paddingBottom:10, backgroundColor:'#FFF',alignItems:'center'}}>
             <View>

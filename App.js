@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 //Addition Library
 import { createStackNavigator, createAppContainer } from 'react-navigation';
+import { Provider } from 'react-redux'
 
 //Screens 
 import HomeScreen from './src/screen/HomeScreen'
@@ -11,6 +12,7 @@ import LoginScreen from './src/screen/LoginScreen'
 import CategoryScreen from './src/screen/CategoryScreen'
 import ProductScreen from './src/screen/ProductScreen'
 import CardScreen from './src/screen/CardScreen';
+import store from './src/store'
 
 const AppStackNavigator = createStackNavigator({
   Home: { 
@@ -52,7 +54,7 @@ const AppStackNavigator = createStackNavigator({
 
   },
   {
-    initialRouteName: "Home"
+    initialRouteName: "Category"
   }
   )
 
@@ -62,7 +64,9 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <AppContainer />
+      <Provider store={store}>
+        <AppContainer />
+      </Provider>
     );
   }
 }

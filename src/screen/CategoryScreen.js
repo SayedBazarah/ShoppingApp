@@ -51,10 +51,8 @@ export default class CategoryScreen extends Component {
                 </CardItem>       
             </Card>  
 
-            <View style={{flexDirection:'row'}}>
-                <View style={{flex:.5, marginLeft:10, marginRight:5, marginTop: 5}}>
+            <View style={{}}>
                     {this.renderProduct()}
-                </View>
             </View>
               
             </Content>
@@ -63,15 +61,42 @@ export default class CategoryScreen extends Component {
       }
 
       renderProduct() {
+        
         var productList = []
         let product = this.state.items
-        for ( let i =0 ; i < product.length; i ++ ){
+        for ( let i =0 ; i < product.length; i+=2 ){
+          if ( product[i+1]){
           productList.push(
-            <ProductDetails
-              product = {product[i]}
-              press = {() => this.props.navigation.navigate('Product',{product: product[i]})}
-            />
+          <View style={{flexDirection:'row' ,marginBottom:5}}>
+            <View style={{flex:.5, marginLeft:10, marginRight:5, marginTop: 5}}>
+              <ProductDetails
+                  product = {product[i]}
+                  press = {() => this.props.navigation.navigate('Product',{product: product[i]})}
+              />
+              </View>
+              <View style={{flex:.5, marginLeft:5, marginRight:10, marginTop: 5}}>
+                <ProductDetails
+                product = {product[i+1]}
+                press = {() => this.props.navigation.navigate('Product',{product: product[i+1]})}
+              />
+          </View>
+          </View> ) 
+          }else{
+            productList.push(
+            <View style={{flexDirection:'row'}}>
+            <View style={{flex:.5, marginLeft:10, marginRight:5, marginTop: 5}}>
+              <ProductDetails
+                  product = {product}
+                  press = {() => this.props.navigation.navigate('Product',{product: product[i]})}
+              />
+              </View>
+           
+         </View>  
+          
+
           )
+        }
+         
         }
         return productList
 

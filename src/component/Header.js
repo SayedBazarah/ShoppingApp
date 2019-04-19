@@ -5,7 +5,9 @@ import { Text, View, TouchableOpacity,Button, Image} from 'react-native';
 //Addition Library 
 import {Constants} from 'expo'
 import { Header, Left, Right, Icon, Body, Title } from 'native-base';
-  
+ 
+import { connect } from "react-redux";
+import cartItems from '../reducers/cartItems';
 //Custom Component i Write 
 
 class AppHeader extends Component {
@@ -21,14 +23,24 @@ class AppHeader extends Component {
              <Title style={styles.title}>{this.props.title}</Title>
             </Body>
             <Right>
-              <Icon onPress={this.props.rightIconAction} name={this.props.rightIconName} style={{color:'white', marginLeft:10}} />
+            <View style={[{ padding: 5 }, Platform.OS == 'android' ? styles.iconContainer : null]}>
+              <View style={{ position: 'absolute', height: 30, width: 30, borderRadius: 15, backgroundColor: 'rgba(95,197,123,0.8)', right: 15, bottom: 15, alignItems: 'center', justifyContent: 'center', zIndex: 2000,           }}>
+                    <Text style={{ color: 'white', fontWeight: 'bold' }}>{this.props.cartItems.length}</Text>
+                </View>
+                <Icon onPress={this.props.rightIconAction} name={this.props.rightIconName} style={{color:'white'}} size= {30} />
+              </View>
             </Right>
           </Header>
     );
 }
 }
+const mapStateToProps = (state) => {
+  return{
+    cartItems: state
+  }
+}
 
-export default AppHeader;
+export default connect(mapStateToProps)(AppHeader);
 
 const styles={
   body: {
