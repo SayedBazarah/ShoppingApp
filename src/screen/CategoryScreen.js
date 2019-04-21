@@ -38,7 +38,7 @@ export default class CategoryScreen extends Component {
                 leftIconName = "md-menu"
                 rightIconAction = {() => this.props.navigation.navigate('CardItem')}
                 rightIconName = "md-cart"
-                title = "Home"
+                title = "Category"
             />
             <SearchBar />
             

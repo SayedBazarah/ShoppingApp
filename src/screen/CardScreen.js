@@ -29,7 +29,7 @@ class CardScreen extends Component {
           <Header 
             leftIconAction = {()=> this.props.navigation.navigate('DrawOpen')}
             leftIconName = "md-menu"
-            title = "Home"
+            title = "Cart Items"
             rightIconName = "md-cart"
           />
         <Content style={{flex:1, marginTop:20}}>

@@ -29,7 +29,6 @@ class ProductScreen extends Component {
          leftIconName = "md-menu"
          rightIconAction = {() => this.props.navigation.navigate('CardItem')}
          rightIconName = "md-cart"
-         title = "Home"
         />
           <Image style={{ height: '50%', width:null}} source={{uri:this.state.productDetails[0].image}} />     
         <View style= {{flexDirection: 'column',marginLeft:10, alignContent: 'space-between'}}>
@@ -42,9 +41,7 @@ class ProductScreen extends Component {
       <TouchableOpacity onPress={() => this.props.addItemToCart(this.state.productDetails)} style={{borderWidth: 1, borderRadius:4, marginLeft:10, marginRight:10,justifyContent:'center', alignItems:'center',height: 50,backgroundColor:'#3a455c'}}>
         <Text style={{color:'#FFF'}}>ADD TO CARD</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => this.props.navigation.navigate('CardItem',{item: this.state.productDetails})} style={{borderWidth: 1, borderRadius:4, marginLeft:10,marginTop:10, marginRight:10,justifyContent:'center', alignItems:'center',height: 50,backgroundColor:'#3a455c',paddingBottom:10}}>
-        <Text style={{color:'#FFF'}}>Buy Now</Text>
-      </TouchableOpacity>
+      
       </View>
     )
   }
@@ -74,7 +71,9 @@ class ProductScreen extends Component {
       addItemToCart: (product) => dispatch({ type: 'ADD_TO_CART', payload: product })
   }
 }
-
+<TouchableOpacity onPress={() => this.props.navigation.navigate('CardItem',{item: this.state.productDetails})} style={{borderWidth: 1, borderRadius:4, marginLeft:10,marginTop:10, marginRight:10,justifyContent:'center', alignItems:'center',height: 50,backgroundColor:'#3a455c',paddingBottom:10}}>
+        <Text style={{color:'#FFF'}}>Buy Now</Text>
+      </TouchableOpacity>
  const { navigation } = this.props;
     const product = navigation.getParam('product', 'NO-Data');
     this.setState({

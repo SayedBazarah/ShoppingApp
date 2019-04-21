@@ -54,7 +54,7 @@ const AppStackNavigator = createStackNavigator({
 
   },
   {
-    initialRouteName: "Category"
+    initialRouteName: "Home"
   }
   )
 
