@@ -22,16 +22,19 @@ export default class HomeScreen extends Component {
     this.state= {
       recommendedProduct: [],
       categories: [],
+      products: [],
     }
   }
   //This function use to do something before component render on screen
   componentWillMount(){
+
     var recProduct = [
-     {itemCreator:"Louise Hay",title:'UNCHARTERTED',price:'9.99',saving:"2.99$",rating:4 ,image:'https://res.cloudinary.com/dha2m9q8b/image/upload/v1555321247/GraduationProjectAssets/recommended_2_ll0dc4.jpg'},
-     {itemCreator:"Louise Hay",title:'You can heal your life',price:'19.99',saving:"4.99$",rating:3 ,image:'https://res.cloudinary.com/dha2m9q8b/image/upload/v1555321246/GraduationProjectAssets/recommended_1_tadegx.jpg'},
-     {itemCreator:"Louise Hay",title:'UFC 3',price:'49.99',saving:"9.99$",rating:5 ,image: 'https://res.cloudinary.com/dha2m9q8b/image/upload/v1555321233/GraduationProjectAssets/recommended_3_wthzyh.jpg'},
+     {itemCreator:"Zara",title:'Black Hat',price:'49.99$',saving:"5.99$",rating:4 ,image:'http://res.cloudinary.com/atf19/image/upload/c_crop,h_250,w_358,x_150/v1500465309/pexels-photo-206470_nwtgor.jpg'},
+     {itemCreator:"Nike",title:'V Neck T-Shirt',price:'39.99$',saving:"4.99$",rating:3 ,image:'http://res.cloudinary.com/atf19/image/upload/c_crop,h_250,x_226,y_54/v1500465309/pexels-photo-521197_hg8kak.jpg'},
+     {itemCreator:"Armani",title:'Grey Blazer',price:'899.99$',saving:"79.99$",rating:5 ,image: 'http://res.cloudinary.com/atf19/image/upload/c_scale,w_300/v1500284127/pexels-photo-497848_yenhuf.jpg'},
 
     ]
+
     var cat = [
       {id: 1,title: 'MEN',},
       {id: 2,title: 'WOMEN',},
@@ -40,6 +43,7 @@ export default class HomeScreen extends Component {
       {id: 3,title: 'KIDS',},
       {id: 4,title: 'ACCESORIES',}
     ]
+
     this.setState({
       recommendedProduct: recProduct,
       categories: cat
@@ -145,7 +149,7 @@ renderRecommendedItem(){
         <RecommendedCardItem 
           key = {i}
           product = {this.state.recommendedProduct[i]}  
-          dir= {() => this.props.navigation.navigate('Product')}
+          dir= {() => this.props.navigation.navigate('Product', {product: this.state.recommendedProduct[i]})}
         />
 
     )
