@@ -39,34 +39,31 @@ class CardScreen extends Component {
         <TouchableOpacity  style={{borderWidth: 1, borderRadius:4,marginBottom:10, marginLeft:10,marginTop:10, marginRight:10,justifyContent:'center', alignItems:'center',height: 50,backgroundColor:'#3a455c',paddingBottom:10}}>
         <Text style={{color:'#FFF',fontSize:18,fontWeight:'500', justifyContent:'center',paddingTop:5, alignItems:'center',}}>Check Out</Text>
         </TouchableOpacity>
-        
+       
       </View>
     )
   }
   //renderProducts
   renderProducts(){
     var list =[]
-    
+    console.log(this.props.cartItems)
     if (this.props.cartItems.length > 0 ){
-      for(var arr = 0; arr < this.props.cartItems.length; arr++ ){
-        product = this.props.cartItems[arr]
-        for (var i = 0; i < product.length; i++){
+      for(var i = 0; i < this.props.cartItems.length; i++ ){
+        product = this.props.cartItems[i]
+        console.log(product)
           list.push(
             <View style={{flexDirection:'row', justifyContent:'space-around', alignItems:'center',paddingBottom: 10}}>
               <View style={{flexDirection:'column',justifyContent:'center', alignItems:'center'}}>
-                <Image style={{height:50, width: 50,paddingBottom:7}} source={{uri: product[i].image}} />
-                <Text style={{fontSize: 16}}>{product[i].title}</Text>
+                <Image style={{height:50, width: 50,paddingBottom:7}} source={{uri: product.image}} />
+                <Text style={{fontSize: 16, width: 80,marginTop:5, justifyContent:'center',alignItems:'center'}}>{product.title}</Text>
               </View>
-              <Text style={{fontSize: 20}}>{product[i].price}</Text>
+              <Text style={{fontSize: 20}}>{product.price}</Text>
               {this.renderCounter()}
-              <TouchableOpacity onPress={this.props.removeItem} style={{borderWidth:1, justifyContent:'center', alignItems:'center', borderRadius:4,height:32,width:32}}>
-               <Icon name="close" style={{fontSize:18}}  />
-              </TouchableOpacity>
+              
             </View>
           )
         }
-        console.log(product[0].image)
-      }
+      
       return list
     }else{
       console.log('cart is empty')

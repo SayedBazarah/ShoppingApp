@@ -7,45 +7,62 @@ import { connect } from 'react-redux'
 
 //Custom Component I wrote
 import Header from '../component/Header'
+import { Content } from 'native-base';
+
 
 class ProductScreen extends Component {
   constructor(props){
       super(props)
       this.state= {
-        productDetails: [  
-          {id: 1, title: 'Black Hat', categoryId: 5, categoryTitle: 'MEN', price: '22$', image: 'http://res.cloudinary.com/atf19/image/upload/c_crop,h_250,w_358,x_150/v1500465309/pexels-photo-206470_nwtgor.jpg', description: "Hello there, i'm a cool product with a heart of gold."},
-        ]
+        productDetails: this.props.navigation.state.params.product
       }
   }
-  componentWillMount(){
-   
-
+  getNavigationParams() {
+    return this.props.navigation.state.params || {}
   }
+  
   render() {
-    return (
-      <View style={{position: 'relative'}}>
-        <Header
-         leftIconAction = {()=> this.props.navigation.navigate('Home')}
-         leftIconName = "md-menu"
-         rightIconAction = {() => this.props.navigation.navigate('CardItem')}
-         rightIconName = "md-cart"
-        />
-          <Image style={{ height: '50%', width:null}} source={{uri:this.state.productDetails[0].image}} />     
-        <View style= {{flexDirection: 'column',marginLeft:10, alignContent: 'space-between'}}>
+    return(
 
-          <Text style={{fontSize:34, marginTop:10}}>{this.state.productDetails[0].price}</Text>
-          <Text style={{fontSize:26, marginTop: 20, }}>{this.state.productDetails[0].title}</Text>     
-          <Text style={{fontSize:14, color:'gray' }}>{this.state.productDetails[0].categoryTitle}</Text>
-          <Text style={{fontSize:14, }}>{this.state.productDetails[0].description}</Text>     
-      </View>
-      <TouchableOpacity onPress={() => this.props.addItemToCart(this.state.productDetails)} style={{borderWidth: 1, borderRadius:4, marginLeft:10, marginRight:10,justifyContent:'center', alignItems:'center',height: 50,backgroundColor:'#3a455c'}}>
-        <Text style={{color:'#FFF'}}>ADD TO CARD</Text>
-      </TouchableOpacity>
+    <View style ={{ flex:1, }}>
       
-      </View>
-    )
+      <Content style= {{  flexDirection:'row',  marginTop: 5}}>
+        <Swiper removeClippedSubviews={false} autoplay={true} showsButtons={true} height={200}  style={{height: 100 }} >
+          {
+            this.state.productDetails.image.map((image) => {
+              console.log(image);
+              <View style={{flex:1}}>
+                <Image style={{flex:1,width: 100,height: 100}} source={{uri:image }}/>
+              </View>
+              
+            })
+          }
+        </Swiper>
+      
+     
+      </Content>
+      
+      <TouchableOpacity onPress={() => this.props.addItemToCart(this.state.productDetails)} style={{borderWidth: 1, borderRadius:4,marginBottom:10, marginLeft:10, marginRight:10,justifyContent:'center',alignItems:'center',height: 50,backgroundColor:'#3a455c'}}>
+        <Text style={{color:'#FFF'}}>ADD TO CARD</Text>
+      </TouchableOpacity> 
+    </View>
+    
+    )}
+  
+renderSwiper() {
+  var list = []
+  console.log(this.state.productDetails.image.length)
+  for (var i = 0; i < this.state.productDetails.image.length; i++){
+    console.log('image url',i,this.state.productDetails.image[i])
+      list.push(
+        <View key={i} style={{flex:1}}>
+        </View>    
+    );
   }
-  //render Product Details
+
+  return (list)
+  }
+    //render Product Details
   
   //render product Images
   renderProductImages(){
@@ -58,8 +75,42 @@ class ProductScreen extends Component {
   }
 
 /*
-   const { navigation } = this.props;
-    const product = navigation.getParam('product', 'NO-Data');
+return (
+      <View style={{position: 'relative'}}>
+        <Header
+         leftIconAction = {()=> this.props.navigation.navigate('Home')}
+         leftIconName = "md-menu"
+         rightIconAction = {() => this.props.navigation.navigate('CardItem')}
+         rightIconName = "md-cart"
+        />
+       <View style={{marginTop:0}}>
+        <Image style={{ height: '50%', width:null}} source={{uri:this.state.productDetails.image}} />     
+        <View style= {{flexDirection: 'column',marginLeft:10, alignContent: 'space-between'}}>
+            <Text style={{fontSize:26, marginTop: 20, }}>{this.state.productDetails.title}</Text>     
+            <Text style={{fontSize:14, color:'gray' }}>{this.state.productDetails.categoryTitle}</Text>
+            <Text style={{fontSize:14, }}>{this.state.productDetails.description}</Text>     
+        </View>
+        </View>
+      <TouchableOpacity onPress={() => this.props.addItemToCart(this.state.productDetails)} style={{borderWidth: 1, borderRadius:4,marginBottom:10, marginLeft:10, marginRight:10,justifyContent:'center', alignItems:'center',height: 50,backgroundColor:'#3a455c'}}>
+        <Text style={{color:'#FFF'}}>ADD TO CARD</Text>
+      </TouchableOpacity>
+      
+      </View>
+    )
+
+
+
+
+
+
+
+
+          <Text style={{fontSize:34, marginTop:10}}>{this.state.productDetail.price}</Text>
+
+const { navigation } = this.props;
+
+
+   const product = navigation.getParam('product', 'NO-Data');
     this.setState({productDetails: product})  
     <Swiper autoplay={true} style={{height:250}} >
           <View key={i} style={{flex:1}}>

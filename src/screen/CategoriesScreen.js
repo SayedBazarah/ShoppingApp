@@ -5,12 +5,15 @@ import {  Left, Right, Icon, Dimensions, FlatList} from 'native-base';
 import Header from '../component/Header'
 
 export default class CategoriesScreen extends Component {
+    
     constructor(props){
         super(props)
         this.state = {
             categories: []
         }
     }
+
+    //Getting Passed Props with navigation
     componentWillMount(){
         const { navigation } = this.props;
         const cat = navigation.getParam('cat', 'NO-Cat');
@@ -42,8 +45,9 @@ export default class CategoriesScreen extends Component {
         let cat = [];
         var list = this.state.categories
         for(var i=0; i<list.length; i++) {
+        const catpress = list[i].title
         cat.push(
-            <TouchableOpacity key={i}  onPress={() => this.props.navigation.navigate('Category')}>
+            <TouchableOpacity key={i}  onPress={() => this.props.navigation.navigate('Category',{cat: catpress})}>
                 <Text style={{ fontSize: 30,  paddingTop: 30 , }} >{list[i].title }</Text>
             </TouchableOpacity>   
         );

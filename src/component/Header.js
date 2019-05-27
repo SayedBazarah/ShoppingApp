@@ -11,7 +11,8 @@ import cartItems from '../reducers/cartItems';
 //Custom Component i Write 
 
 class AppHeader extends Component {
-  
+  //Component i wrote 
+  //Header 
     render(){
     return(
          <Header  style={{ alignItems: 'center', alignContent: 'center' ,backgroundColor: '#3a455c',height: 55, marginTop: Constants.statusBarHeight, borderBottomColor: '#757575'}}> 

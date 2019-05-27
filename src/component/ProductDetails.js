@@ -8,13 +8,13 @@ export default class ProductDetails extends Component {
     super(props)
   }
   render() {
-   // console.log(this.props.product)
+   
     return (
       <TouchableOpacity onPress={this.props.press} style={{flexDirection: 'column',paddingTop:10,paddingBottom:10, backgroundColor:'#FFF',alignItems:'center'}}>
             <View>
                 <Image 
                     style={{ height:90, width:70,paddingBottom:5}} 
-                    source= {{uri: this.props.product.image}}
+                    source= {{uri: this.props.product.image[0]}}
                     />
             </View>
 

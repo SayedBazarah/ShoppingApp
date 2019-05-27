@@ -4,10 +4,15 @@ import {  CardItem, Right } from 'native-base';
 import StarRating from 'react-native-star-rating';
 
 export default class RecommendedCardItem extends Component {
+
+  componentWillMount(){
+    
+  }
   render() {
+    const product = this.props.product
     return (
         <TouchableOpacity 
-          onPress={this.props.dir}
+          onPress= {this.props.onPress}
           style={{flex:1, justifyContent: "center", flexDirection: 'row', padding: 8}}
         >
             <View>
