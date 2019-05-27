@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
-import { Text, View, Image, TouchableOpacity } from 'react-native'
+import { Text, View, Image, TouchableOpacity, Dimensions} from 'react-native'
 
 //Addition Library
 import Swiper from 'react-native-swiper'
 import { connect } from 'react-redux'
+import Carousel from 'react-native-snap-carousel';
 
 //Custom Component I wrote
 import Header from '../component/Header'
 import { Content } from 'native-base';
+import ProductImages from '../component/ProductImages'
 
 
 class ProductScreen extends Component {
@@ -21,25 +23,32 @@ class ProductScreen extends Component {
     return this.props.navigation.state.params || {}
   }
   
+  componentWillMount(){
+    setTimeout(() => {
+      
+    }, 1000);
+  }
+
   render() {
     return(
 
-    <View style ={{ flex:1, }}>
-      
-      <Content style= {{  flexDirection:'row',  marginTop: 5}}>
-        <Swiper removeClippedSubviews={false} autoplay={true} showsButtons={true} height={200}  style={{height: 100 }} >
-          {
-            this.state.productDetails.image.map((image) => {
-              console.log(image);
-              <View style={{flex:1}}>
-                <Image style={{flex:1,width: 100,height: 100}} source={{uri:image }}/>
-              </View>
-              
-            })
-          }
-        </Swiper>
-      
-     
+    <View style ={{ flex:1, width: Dimensions.get('window').width, }}>
+      <Header
+         leftIconAction = {()=> this.props.navigation.navigate('Home')}
+         leftIconName = "md-menu"
+         rightIconAction = {() => this.props.navigation.navigate('CardItem')}
+         rightIconName = "md-cart"
+        />
+      <Content style= {{  flexDirection:'column',  marginLeft: 10, marginTop:2,marginRight: 10}}>
+        <ProductImages 
+        images = { this.state.productDetails.image}
+        />       
+      <View style={{alignItems:'flex-end', }}>
+        <Text style={{fontSize: 45,marginRight:15, color:'#D3D3D3' }}>{this.state.productDetails.price}</Text>
+        <Text style={{fontSize: 28,marginRight:15, fontWeight: "400",  }}>{this.state.productDetails.title}</Text>
+        <Text style={{fontSize: 18,marginRight:15, color:'#808080', width: "80%", textAlign:'right'  }}>{this.state.productDetails.description}</Text>
+
+      </View>
       </Content>
       
       <TouchableOpacity onPress={() => this.props.addItemToCart(this.state.productDetails)} style={{borderWidth: 1, borderRadius:4,marginBottom:10, marginLeft:10, marginRight:10,justifyContent:'center',alignItems:'center',height: 50,backgroundColor:'#3a455c'}}>
@@ -49,14 +58,15 @@ class ProductScreen extends Component {
     
     )}
   
-renderSwiper() {
+renderImages() {
   var list = []
   console.log(this.state.productDetails.image.length)
   for (var i = 0; i < this.state.productDetails.image.length; i++){
     console.log('image url',i,this.state.productDetails.image[i])
       list.push(
-        <View key={i} style={{flex:1}}>
-        </View>    
+       <ProductImages 
+       images = { this.state.productDetails.image}
+       />  
     );
   }
 
@@ -130,6 +140,19 @@ const { navigation } = this.props;
     this.setState({
       productDetails: product
     })
+
+
+    <Swiper removeClippedSubviews={false} autoplay={true} showsButtons={true} height={200}  style={{height: 100 }} >
+          {
+            this.state.productDetails.image.map((image) => {
+              console.log(image);
+              <View style={{flex:1}}>
+                <Image style={{flex:1,width: 100,height: 100}} source={{uri:image }}/>
+              </View>
+              
+            })
+          }
+        </Swiper>
   */
 }
 const mapDispatchToProps = (dispatch) =>{

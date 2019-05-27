@@ -103,8 +103,10 @@ export default class HomeScreen extends Component {
         <Content horizontal={true} style={{paddingLeft:8, flexDirection: 'row', paddingBottom:5,  borderBottomColor:'#dee0e2', borderBottomWidth:1}}>
           {this.renderBestSelling()}
         </Content>
-        <CardItem header style={{borderBottomWidth:1,justifyContent:'center', borderBottomColor:'#dee0e2'}}>
+        <CardItem  header style={{borderBottomWidth:1,justifyContent:'center', borderBottomColor:'#dee0e2'}}>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('BestSelling')} > 
           <Text style={{color:'#3a455c', fontSize: 16, fontWeight:'400'}}>More</Text>
+          </TouchableOpacity>
         </CardItem>
       </Card>
 
@@ -161,13 +163,11 @@ renderBestSelling(){
   var list = []
   for( var i = 0; i < this.state.bestSelling.length; i++ ){
     list.push(
-      <TouchableOpacity onPress={() => this.props.navigation.navigate('Category',)} >  
       <ProductQucklyOverView 
         key= {i}
         imageUrl= {this.state.bestSelling[i].image[0]}
         itemPrice= {this.state.bestSelling[i].price}
       />
-      </TouchableOpacity>
     )
   }
   return list
@@ -181,7 +181,7 @@ renderRecommendedItem(){
       <RecommendedCardItem 
             key = {i}
             product = {product[i]}  
-            onPress= {() => this.props.navigation.navigate('Category',{})}
+            onPress= {() => this.props.navigation.navigate('Category',)}
           />
 
     )

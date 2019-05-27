@@ -13,7 +13,7 @@ import CategoryScreen from './src/screen/CategoryScreen'
 import ProductScreen from './src/screen/ProductScreen'
 import CardScreen from './src/screen/CardScreen';
 import store from './src/store'
-import Recom from './src/component/RecommendedCardItem'
+import BestSelling  from './src/screen/BestSelling';
 const AppStackNavigator = createStackNavigator({
   Home: { 
     screen: HomeScreen,
@@ -51,7 +51,12 @@ const AppStackNavigator = createStackNavigator({
       header:null
     })
   },
-  
+  BestSelling: {
+    screen: BestSelling,
+    navigationOptions: () => ({
+      header:null
+    })
+  },
 
   },
   {
