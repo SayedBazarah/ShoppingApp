@@ -8,7 +8,7 @@ export default class ProductDetails extends Component {
     super(props)
   }
   render() {
-   
+    
     return (
       <TouchableOpacity onPress={this.props.press} style={{flexDirection: 'column',paddingTop:10,paddingBottom:10, backgroundColor:'#FFF',alignItems:'center'}}>
             <View>

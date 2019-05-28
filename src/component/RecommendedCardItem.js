@@ -18,7 +18,7 @@ export default class RecommendedCardItem extends Component {
             <View>
                 <Image 
                     style={{ height:90, width:60}} 
-                    source={{uri:this.props.product.image}} 
+                    source={{uri:this.props.product.image[0]}} 
                     />
             </View>
 
