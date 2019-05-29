@@ -16,7 +16,6 @@ class CardScreen extends Component {
       
   }
   componentWillMount(){
-    console.log(this.props.cartItems)
     var list = this.props.cartItems
     this.setState({
       product: this.list
@@ -55,8 +54,8 @@ class CardScreen extends Component {
           list.push(
             <View style={{flexDirection:'row', justifyContent:'space-around', alignItems:'center',paddingBottom: 10}}>
               <View style={{flexDirection:'column',justifyContent:'center', alignItems:'center'}}>
-                <Image style={{height:50, width: 50,paddingBottom:7, resizeMode:'center'}} source={{uri: product.image[0]}} />
-                <Text style={{fontSize: 12, width: 80, height:50 ,marginTop:5, justifyContent:'center',alignItems:'center'}}>{product.title}</Text>
+                <Image style={{height:50, width: 50,paddingBottom:7}} source={{uri: product.image[0]}} />
+                <Text style={{fontSize: 16, width: 80,marginTop:5, justifyContent:'center',alignItems:'center'}}>{product.title}</Text>
               </View>
               <Text style={{fontSize: 20}}>{product.price}</Text>
               {this.renderCounter()}
