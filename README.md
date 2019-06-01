@@ -9,8 +9,8 @@
   <h5>Expo</h5>
   
 <h2>How to Run the application</h2>
-  -  Clone or Download Repository 
-  -  run 'npm install' in project file 
+  -  Clone or Download Repository <h6></h6>
+  -  run 'npm install' in project file <h6></h6>
   -  run 'react-native run-ios'
     
 <h2>Demo Video</h2>
